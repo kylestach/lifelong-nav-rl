@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="LiReN: Lifelong Autonomous Fine-Tuning for Navigation Foundation Models">
+  <meta name="keywords" content="Reinforcement Learning, RL, Robotics, LiReN">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LiReN: Lifelong Autonomous Fine-Tuning for Navigation Foundation Models</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span class="dnerf">LiReN</span>: Lifelong Autonomous Fine-Tuning for Navigation Foundation Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://kylesta.ch">Kyle Stachowicz</a>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/lydia-ignatova">Lydia Ignatova</a>,</span>
+            <span class="author-block">
+              <a href="https://people.eecs.berkeley.edu/~svlevine/">Sergey Levine</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">UC Berkeley</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/TODO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/TODO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=TODO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/kylestach/lifelong-nav-rl"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/kylestach/lifelong-nav-rl/releases/tag/TODO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span>
+              <!-- Model Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/rail-berkeley/liren-base"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      🤗
+                      <!-- <i class="far fa-images"></i> -->
+                  </span>
+                  <span>Model Weights</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted playsinline loop height="100%">
+        <source src="./static/videos/timelapse.mp4"
+                type="video/mp4">
+      </video>
+    <h2 class="subtitle has-text-centered">
+      <span class="dnerf">LiReN</span> is a navigation foundation model trained on diverse data with offline reinforcement learning and capable of autonomous fine-tuning in open-world settings.
+    </h2>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent works have proposed a number of general-purpose robotic foundation models that can control a variety of robotic platforms to perform a range of different tasks, including in the domains of navigation and manipulation. However, such models are typically trained via imitation learning, which precludes the ability to adapt autonomously through experience that the robot gathers on the job.
+          </p>
+          <p>
+            In this work, we train general-purpose robotic foundation models in the domain of robotic navigation specifically with the aim of enabling autonomous self-improvement. We show that a combination of pretraining with offline reinforcement learning and a complete system for continual autonomous operation leads to a robotic learning framework that not only starts off with broad and diverse capabilities, but can further specialize and adapt those capabilities in the course of carrying out navigational tasks in a given deployment location. To our knowledge, our model <span class="dnerf">LiReN</span> is the first navigation robot foundation model that is capable of fine-tuning with autonomous online data in open-world settings.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/TODO"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Pre-Training. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Offline Generalist Policy</h2>
+          <p>
+            Pre-training on a large pre-existing robot dataset yields a strong generalist navigation policy that matches previous state-of-the-art models while being amenable to fine-tuning with online RL.
+          </p>
+          <div class="columns">
+            <div class="column is-two-fifths">
+              <video id="jackal" autoplay controls muted loop playsinline width="100%">
+                <source src="./static/videos/jackal.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half">
+              <video id="jackal" autoplay controls muted loop playsinline width="100%">
+                <source src="./static/videos/create.mp4" type="video/mp4">
+              </video>
+              <video id="jackal" autoplay controls muted loop playsinline width="100%">
+                <source src="./static/videos/rail_corner.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ Pre-Training. -->
+
+      <!-- Fine-Tuning-. -->
+      <div class="column">
+        <h2 class="title is-3">Online Fine-Tuning</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              Our model can autonomously fine-tune its navigation policy to adapt to a new environment or embodiment using online reinforcement learning.
+            </p>
+            <img src="./static/images/qualitative_improvement.png" alt="Online Fine-Tuning" />
+            <p>Before autonomous fine-tuning, the robot occasionally collides with low-contrast obstacles that are hard to see in the target environment. After deploying the robot for autonomous fine-tuning it is able to successfully navigate without collisions.</p>
+          </div>
+        </div>
+      </div>
+      <!--/ Fine-Tuning. -->
+    </div>
+
+    <!-- System architecture. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Enabling Autonomous Learning</h2>
+        <p>
+          Enabling <it>deployable</it> autonomous learning requires a complete system to support robust operation in the real world. While deploying a model in the real world already requires <b>goal/task selection</b> and <b>safety mechanisms</b> to avoid problematic actions, online learning also requires we collect <b>diverse experiences</b> for the  model to learn from.
+        </p>
+        <div class="system-container">
+          <div class="system-column left-column">
+            <div class="system-box" data-text="To propose goals (represented by images) and evaluate when they are completed, we make use of the spatial structure of navigation. Prior to deployment we map the area to create a graph of image observations and their connectivity in the environment. During deployment, when a goal is reached, a future goal can be selected randomly from its successors in the graph. We typically select goals 10-20 meters into the future according to an exponential distribution. If desired, the goal graph can also be updated online.">
+              <div class="system-box-title">
+                <h3>Goal Selection</h3>
+              </div>
+              <div class="system-box-image">
+                <img src="./static/images/goals.png" alt="Goal Selection" />
+              </div>
+            </div>
+            <div class="system-box" data-text="To enable indefinite operation for lifelong learning, we continuously monitor the battery's charge. We place charging stations in the deployment environment; if the battery level drops below a set threshold, it will dock for charging the next time it passes a station.">
+              <div class="system-box-image">
+                <img src="./static/images/battery.png" alt="Battery Management" />
+              </div>
+              <div class="system-box-title">
+                <h3>Battery Management</h3>
+              </div>
+            </div>
+          </div>
+          <div class="system-column middle-column">
+            <div class="system-box" data-text="In order to fine-tune models, the training is handled by a training server which receives incoming state / action pairs from the robot in real time and asynchronously sends updates to the model parameters to the robot over the network in a continuous fashion. The training server is robust to unstable network conditions, allowing the robot to gracefully recover from disconnects.">
+              <div class="system-box-title">
+                <h3>Asynchronous Online Training</h3>
+              </div>
+              <div class="system-box-image">
+                <img src="./static/images/training.png" alt="Asynchronous Online Training" />
+              </div>
+            </div>
+          </div>
+          <div class="system-column right-column">
+                <div class="system-box" data-text="If the robot becomes stuck in a small area without exploring the rest of the environment, continuing to train on the new data will not increase overall performance. We prevent this failure mode in two ways: first, we avoid getting caught in short loops by biasing the goal graph's construction away from short cycles. The second failure case occurs when the robot is unable to reach any goal because it is stuck or in collision with an object. When the robot does not reach its goal for a set period, it is considered stuck and a new goal is selected. When the robot collides with an object, we deliver a randomized pseudo-reset to perturb the state.">
+              <div class="system-box-title">
+                <h3>Recovery Behavior</h3>
+              </div>
+              <div class="system-box-image">
+                <img src="./static/images/crash.png" alt="Recovery Behavior" />
+              </div>
+            </div>
+            <div class="system-box" data-text="While exploring the state space, there are some zones in the environment the robot cannot enter for a variety of reasons. To protect privacy, ensure robot safety, and maintain reasonable localization, we demarcate problematic areas such as bathrooms and open holes on the map. When the robot detects that it is in a keepout zone, it triggers a minimal reset which backs away into a safe zone.">
+              <div class="system-box-image">
+                <img src="./static/images/keepout.png" alt="Keepout Zones" />
+              </div>
+              <div class="system-box-title">
+                <h3>Keepout Zones</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="system-description">
+          <p id="system-description-text">Hover over a box to see its description.</p>
+        </div>
+      </div>
+    </div>
+    <!--/ System architecture. -->
+
+    <!-- System flowchart -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">System Overview</h2>
+        <p>
+          <span class="dnerf">LiReN</span> continually fine-tunes a pre-trained offline RL policy with new online data. To maintain a robust deployment, we wrap the policy with a finite state machine acting as an <i>autonomy supervisor</i>.
+        </p>
+        <br>
+        <img src="./static/images/system_flowchart.png" alt="System Flowchart" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{stachowicz2024lifelong,
+  author    = {Stachowicz, Kyle and Ignatova, Lydia and Levine, Sergey},
+  title     = {Lifelong Autonomous Fine-Tuning for Navigation Foundation Models},
+  journal   = {arXiv preprint arXiv:TODO},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/liren_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/kylestach/lifelong-nav-rl" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website uses the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
