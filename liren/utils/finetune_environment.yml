@@ -1,0 +1,30 @@
+name: liren-fine
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - pip
+  - pip:
+    - transforms3d
+    - tensorflow
+    - tensorflow_datasets
+    - tensorflow_graphics
+    - tf_keras
+    - tf_agents
+    - scikit-learn
+    - ml_collections
+    - openexr==1.3.9
+    - jax>=0.4.20
+    - jaxlib
+    - flax
+    - chex
+    - rlax
+    - optax==0.1.7
+    - orbax-checkpoint==0.5.5
+    - opencv-python
+    - wandb
+    - einops
+    - overrides
+    - slack_sdk

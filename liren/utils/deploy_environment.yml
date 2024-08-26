@@ -1,0 +1,26 @@
+name: liren-dep
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - matplotlib
+  - pip
+  - pip:
+    - tensorflow
+    - tensorflow_datasets
+    - tf_keras
+    - transforms3d
+    - jax>=0.4.20
+    - jaxlib
+    - flax
+    - chex
+    - rlax
+    - optax==0.1.7
+    - orbax-checkpoint==0.5.5
+    - opencv-python
+    - wandb
+    - einops
+    - ml-collections
+    - overrides

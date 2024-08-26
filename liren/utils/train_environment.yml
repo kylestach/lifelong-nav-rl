@@ -1,0 +1,29 @@
+name: liren-train
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - pip
+  - pip:
+    - tensorflow
+    - tensorflow_datasets
+    - tensorflow_graphics
+    - tf_keras
+    - tf_agents
+    - scikit-learn
+    - ml_collections
+    - jax>=0.4.20
+    - jaxlib
+    - flax
+    - chex
+    - rlax
+    - optax==0.1.7
+    - orbax-checkpoint==0.5.5
+    - opencv-python
+    - wandb
+    - einops
+    - overrides
+    - rail_tpu_utils
+    - plotly
