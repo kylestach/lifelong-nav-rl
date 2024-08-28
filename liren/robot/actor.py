@@ -32,7 +32,6 @@ from PIL import Image
 from io import BytesIO
 import tensorflow as tf
 import tensorflow_datasets as tfds
-tf.config.set_visible_devices([], 'GPU')
 
 # Handling blocking / non-blocking input
 input_settings = termios.tcgetattr(sys.stdin)

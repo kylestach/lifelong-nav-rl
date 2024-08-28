@@ -14,7 +14,6 @@ This repository contains code for training, deploying, and fine-tuning the LiReN
 - `./training/agent.py`: defines an abstraction that makes it easy to switch between model architectures.
 - `./training/train.py`: main script that trains or fine-tunes a policy on either offline data, online data from a robot, or a mixture of the two. 
 - `./utils/`: contains helper functions used in training, fine-tuning, deploying, and assessing models. 
-- `./scripts/`: contains bash scripts as examples of commands that can be run to easily fine-tune or deploy models. 
 
 
 Besides that, this repository provides helpful abstractions for interacting with a robot.
@@ -181,17 +180,9 @@ pip install -e dlimp/
 ```
 
 ### Datasets
-The GNM datasets are [avilable???]
-- [CONVERSION SCRIPT? WHERE TO FIND THEM?]
-- [***FINISH***]
+For GNM dataset structure and information, please reference the data wrangling section of the [General Navigation Models repository](https://github.com/robodhruv/visualnav-transformer). 
 
-These datasets use the TensorFlow dataset format, which handles data as dictionaries. In the required dataset format, each data point is a trajectory, with nested dictionaries storing information. The loading scripts expect at least the following keys to be present for the preprocessing function to work correctly:
-{
-    "observation": {
-        "image": [list of all the byte string images in the trajectory], 
-        "position": [list of all the positions in the trajectory],
-    }
-}
+In order to convert datasets into the RLDS format, please follow along with the instructions in the [GNM RLDS Dataset Builder repository](https://github.com/kylestach/gnm_rlds_dataset_builder). 
 
 The datasets can be loaded directly and inspected at the trajectory level by using tfds functions alongside the DLataset wrapper from the dlimp package. 
 ```
